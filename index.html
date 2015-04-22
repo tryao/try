@@ -6,16 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>中国国家顶级域安全状态</title>
-    <script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript" src="js/echarts.js"></script>
     <script type="text/javascript" src="js/echart.js"></script>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-    	body{
-
-    		padding-top: 70px;
-    	}
-    </style>
+    <link href="css/style.css" rel="stylesheet">
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,7 +36,7 @@
     				<li class="active"><a href="#">首页</a></li>
     				<li class="dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown">安全中心<span class="caret"></span></a>
     				<ul class="dropdown-menu" role="menu">
-    					<li><a href="#">顶级域</a></li>
+    					<li class="active"><a href="#">顶级域</a></li>
     					<li><a href="#">根镜像</a></li>
     					<li><a href="#">递归云解析</a></li>
     					<li><a href="#">权威云解析</a></li>
@@ -140,10 +136,256 @@
     		</div>
     		
     	</div>
+      <div class="row">
+        <div class="col-md-6" id="changedname" style="height:480px"></div>
+        <div class="col-md-6" id="changeaddr" style="height:480px"></div>
+      </div>
     	<div class="row">
     		<div class="col-md-6" id="dnamechart" style="height:680px"></div>
-    		<div class="col-md-6"></div>
+    		<div class="col-md-6" id="addrchart" style="height:680px"></div>
     	</div>
+        <div class="row">
+            <div class="col-md-6" id="" style="height:600px">
+            <h3>访问量最大的域名(in-addr.arpa.)的来源IP地址</h3>
+                <table class="table table-bordered table-hover">
+                   <thead>
+                     <tr>
+                       <th>ip地址</th>
+                       <th>地理位置</th>
+                       <th>访问次数</th>                       
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                       <td>182.118.20.0</td>
+                       <td>北京</td>
+                       <td>358</td>                       
+                     </tr>
+                     <tr>
+                       <td>220.181.108.0</td>
+                       <td>北京</td>
+                       <td>36</td>                       
+                     </tr>
+                     <tr>
+                       <td>123.125.71.0</td>
+                       <td>北京</td>
+                       <td>12</td>                       
+                     </tr>                     
+                     <tr>
+                       <td>101.226.160.0</td>
+                       <td>北京</td>
+                       <td>12</td>                       
+                     </tr>
+                     <tr>
+                       <td>180.153.229.0</td>
+                       <td>北京</td>
+                       <td>12</td>                       
+                     </tr>
+                     <tr>
+                       <td>表格单元格</td>
+                       <td>北京</td>
+                       <td>表格单元格</td>                       
+                     </tr>
+                     <tr>
+                       <td>表格单元格</td>
+                       <td>北京</td>
+                       <td>表格单元格</td>                       
+                     </tr>
+                     <tr>
+                       <td>表格单元格</td>
+                       <td>北京</td>
+                       <td>表格单元格</td>                       
+                     </tr>
+                     <tr>
+                       <td>表格单元格</td>
+                       <td>北京</td>
+                       <td>表格单元格</td>                       
+                     </tr>
+                     <tr>
+                       <td>表格单元格</td>
+                       <td>北京</td>
+                       <td>表格单元格</td>                       
+                     </tr>
+                   </tbody>
+                 </table>
+            </div>
+            <div class="col-md-6">
+                <h3>访问量最大的IP网段(182.118.20.0)访问的域名</h3>
+                    <table class="table">
+                       <thead>
+                         <tr>
+                           <th>域名</th>
+                           <th>访问次数</th>                       
+                         </tr>
+                       </thead>
+                       <tbody>
+                         <tr>
+                           <td>bk2xc.ac.cn.</td>
+                           <td>246</td>                       
+                         </tr>
+                         <tr>
+                           <td>www.bk256.ac.cn.</td>
+                           <td>23</td>                       
+                         </tr>
+                         <tr>
+                           <td>bk24t.ac.cn.</td>
+                           <td>12</td>                       
+                         </tr>                     
+                         <tr>
+                           <td>www.bk30q.ac.cn.</td>
+                           <td>21</td>                       
+                         </tr>
+                         <tr>
+                           <td>www.bk73q.ac.cn.</td>
+                           <td>12</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>12</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                       </tbody>
+                     </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" id="" style="height:600px">
+                <h3>访问量最大的域名(in-addr.arpa.)的子域名</h3>
+                    <table class="table">
+                       <thead>
+                         <tr>
+                           <th>子域名</th>
+                           <th>访问次数</th>                       
+                         </tr>
+                       </thead>
+                       <tbody>
+                         <tr>
+                           <td>143.9.30.58.in-addr.arpa.</td>
+                           <td>235</td>                       
+                         </tr>
+                         <tr>
+                           <td>136.220.30.58.in-addr.arpa.</td>
+                           <td>13</td>                       
+                         </tr>
+                         <tr>
+                           <td>104.135.31.58.in-addr.arpa.</td>
+                           <td>12</td>                       
+                         </tr>                     
+                         <tr>
+                           <td>50.159.67.58.in-addr.arpa.</td>
+                           <td>12</td>                       
+                         </tr>
+                         <tr>
+                           <td>245.63.100.58.in-addr.arpa.</td>
+                           <td>12</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                       </tbody>
+                     </table>
+            </div>
+            <div class="col-md-6">
+                <h3>访问量最大的IP网段(182.118.20.0)的IP地址</h3>
+                    <table class="table">
+                       <thead>
+                         <tr>
+                           <th>ip地址</th>
+                           <th>地理位置</th>
+                           <th>访问次数</th>                       
+                         </tr>
+                       </thead>
+                       <tbody>
+                         <tr>
+                           <td>182.118.20.0</td>
+                           <td>北京</td>
+                           <td>235</td>                       
+                         </tr>
+                         <tr>
+                           <td>220.181.108.0</td>
+                           <td>北京</td>
+                           <td>23</td>                       
+                         </tr>
+                         <tr>
+                           <td>123.125.71.0</td>
+                           <td>北京</td>
+                           <td>12</td>                       
+                         </tr>                     
+                         <tr>
+                           <td>101.226.160.0</td>
+                           <td>北京</td>
+                           <td>12</td>                       
+                         </tr>
+                         <tr>
+                           <td>180.153.229.0</td>
+                           <td>北京</td>
+                           <td>12</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>北京</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>北京</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>北京</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>北京</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                         <tr>
+                           <td>表格单元格</td>
+                           <td>北京</td>
+                           <td>表格单元格</td>                       
+                         </tr>
+                       </tbody>
+                     </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" id="ports" style="height:480px"></div>
+            <div class="col-md-6"></div>
+        </div>
     	<footer>
     		<p class="pull-right"><a href="#top">回到顶部</a></p>
     		<p>©CNNIC Copyright 2014</p>

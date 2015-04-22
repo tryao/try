@@ -1,7 +1,7 @@
 // 路径配置
 require.config({
     paths: {
-        echarts: 'http://echarts.baidu.com/build/dist'
+        echarts: 'js/dist'
     }
 });
   // 使用
@@ -9,25 +9,26 @@ require(
     [
         'echarts',
         'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+        'echarts/chart/line',
         'echarts/chart/pie'
     ],
     function (ec) {
         // 基于准备好的dom，初始化echarts图表
         var myChart = ec.init(document.getElementById('dnamechart')); 
-        // var chart1=ec.init(document.getElementById('addrchart'));
-        // var chart2=ec.init(document.getElementById('rel_addrchart'));
-        // var chart3=ec.init(document.getElementById('rel_dnamechart'));
+        var chart1=ec.init(document.getElementById('addrchart'));
+        var chart2=ec.init(document.getElementById('changedname'));
+        var chart3=ec.init(document.getElementById('changeaddr'));
         // var chart4=ec.init(document.getElementById('small_dnamechart'));
         // var chart5=ec.init(document.getElementById('small_addrchart'));
-        // var chart6=ec.init(document.getElementById('ports'));
+        var chart6=ec.init(document.getElementById('ports'));
         var option = {
             title:{
                 text:'域名',
                 x:'center'
             },
             tooltip: {
-                trigger:'axis'
-
+                trigger:'axis',
+                formatter:"{a} <br/>{b} : {c} <br/>属性一：<br/>属性二：<br/>属性三：<br/>属性四："
             },
             /*legend: {
                 data:['域名']
@@ -44,7 +45,13 @@ require(
                     "kuwo.cn.","zol-img.com.cn.","zhongchenggongyu.cn","lefeng.cn.","sina.com.cn.","online.sh.cn.",
                     "cdnetdns.cn.","in-addr.cn.","ce.cn.","cnnic.cn.","yihaodian.com.cn.","diditaxi.com.cn.","dns.com.cn",
                     "t.cn","mobage.com.cn.","ccgslb.com.cn.","dns.cn.","dynamic.163data.com.cn.","uc.cn.","cnradio.com.cn.",
-                    "360.cn.","teny.cn.","IN-ADDR.ARPA."]
+                    "360.cn.","teny.cn.","IN-ADDR.ARPA."],
+                     axisLabel : {
+			                show:true,
+			                interval: 0,    // {number}
+			                margin: 2,
+			                rotate: -45
+			                }
                 }
             ],
             
@@ -93,67 +100,124 @@ require(
                 {
                     "name":"",
                     "type":"bar",
-                    "data":[10,10,12,36,  46, 50,51, 66,689]
+                    "data":[10,10,12,36,46,50,51,66,689]
                 }
             ]
         };
-     /*    var option2 = {
-            title : {
-                text: '访问量最大的域名(in-addr.arpa.)的来源IP地址',
-                subtext: '纯属虚构',
-                x:'center'
+        var option2 = {
+    title : {
+        text: '域名访问一周变化',
+        subtext: '纯属虚构'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['最多访问']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['周一','周二','周三','周四','周五','周六','周日']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            axisLabel : {
+                formatter: '{value} °C'
+            }
+        }
+    ],
+    series : [
+        {
+            name:'最多访问',
+            type:'line',
+            data:[11, 11, 15, 13, 12, 13, 10],
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
             },
-            tooltip : {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        }
+    ]
+};
+                    
+    var option3 = {
+    title : {
+        text: 'IP访问一周变化',
+        subtext: '纯属虚构'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['最多访问']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['周一','周二','周三','周四','周五','周六','周日']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            axisLabel : {
+                formatter: '{value} °C'
+            }
+        }
+    ],
+    series : [
+        {
+            name:'最高访问',
+            type:'line',
+            data:[11, 11, 15, 13, 12, 13, 10],
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
             },
-      
-            calculable : true,
-            series : [
-                {
-                    name:'访问来源',
-                    type:'pie',
-                    radius : '55%',
-                    center: ['50%', '60%'],
-                    data:[
-                        {value:335, name:'182.118.20.0'},
-                        {value:310, name:'220.181.108.0'},
-                        {value:234, name:'123.125.71.0'},
-                        {value:135, name:'101.226.160.0'},
-                        {value:1548, name:'180.153.229.0'}
-                    ]
-                }
-            ]
-        };
-         var option3 = {
-            title : {
-                text: '访问量最大的IP网段(182.118.20.0)访问的域名',
-                subtext: '纯属虚构',
-                x:'center'
-            },
-            tooltip : {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-           
-            calculable : true,
-            series : [
-                {
-                    name:'访问来源',
-                    type:'pie',
-                    radius : '55%',
-                    center: ['50%', '60%'],
-                    data:[
-                        {value:335, name:'bk2xc.ac.cn.'},
-                        {value:310, name:'www.bk256.ac.cn.'},
-                        {value:234, name:'bk24t.ac.cn.'},
-                        {value:135, name:'www.bk30q.ac.cn.'},
-                        {value:1548, name:'www.bk73q.ac.cn.'}
-                    ]
-                }
-            ]
-        };
-         var option4 = {
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        }
+    ]
+};
+         /*var option4 = {
             title : {
                 text: '访问量最大的域名(in-addr.arpa.)的子域名',
                 subtext: '纯属虚构',
@@ -237,11 +301,11 @@ require(
                 }
             ]
         };
-        // chart1.setOption(option1);             
-        /*chart2.setOption(option2);             
+        chart1.setOption(option1);             
+        chart2.setOption(option2);             
         chart3.setOption(option3);             
-        chart4.setOption(option4);             
+        /*chart4.setOption(option4);             
         chart5.setOption(option5); */            
-        // chart6.setOption(option6);             
+        chart6.setOption(option6);             
     }
 );
